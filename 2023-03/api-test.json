@@ -1,0 +1,1826 @@
+{
+    "openapi": "3.0.0",
+    "components": {
+        "schemas": {
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.ListApplicationSpacesReq": {
+                "properties": {
+                    "x-jdcloud-request-id": {
+                        "description": "请求ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "x-jdcloud-pin": {
+                        "description": "用户ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "pageSize": {
+                        "default": 0,
+                        "description": "容量，默认不分页",
+                        "format": "int",
+                        "properties": {},
+                        "type": "integer"
+                    },
+                    "pageNum": {
+                        "default": 1,
+                        "description": "页码",
+                        "format": "int",
+                        "properties": {},
+                        "type": "integer"
+                    },
+                    "Name": {
+                        "description": "应用空间名称",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "administratively": {
+                        "description": "行政区域",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "room": {
+                        "description": "机房",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "netZone": {
+                        "description": "网络区域",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "az": {
+                        "description": "可用区",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "resourceArea": {
+                        "description": "资源环境",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "tenantId": {
+                        "description": "租户ID",
+                        "format": "[]string",
+                        "items": {
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        },
+                        "properties": {},
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "x-jdcloud-request-id"
+                ],
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.ListApplicationSpacesRes": {
+                "example": "",
+                "properties": {
+                    "requestId": {
+                        "description": "请求ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "error": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.common.ErrorMessage"
+                    },
+                    "totalCount": {
+                        "description": "总数",
+                        "format": "int",
+                        "properties": {},
+                        "type": "integer"
+                    },
+                    "result": {
+                        "format": "[]*kubernetes.ApplicationSpace",
+                        "items": {
+                            "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.ApplicationSpace"
+                        },
+                        "properties": {},
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.common.ErrorMessage": {
+                "properties": {
+                    "code": {
+                        "description": "状态码",
+                        "enum": [
+                            200,
+                            400,
+                            500
+                        ],
+                        "format": "int",
+                        "properties": {},
+                        "type": "integer"
+                    },
+                    "status": {
+                        "description": "错误码",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "message": {
+                        "description": "错误信息",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.ApplicationSpace": {
+                "properties": {
+                    "name": {
+                        "description": "应用空间名称，全局唯一",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "spaceQuota": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.Quota"
+                    },
+                    "labels": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.MateLabels"
+                    },
+                    "createdTime": {
+                        "description": "创建时间",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "name"
+                ],
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.Quota": {
+                "properties": {
+                    "cpu": {
+                        "description": "cpu配额，单位：核",
+                        "format": "float32",
+                        "properties": {},
+                        "type": "number"
+                    },
+                    "memory": {
+                        "description": "内存配额，单位：MiB",
+                        "format": "uint64",
+                        "properties": {},
+                        "type": "integer"
+                    },
+                    "pod": {
+                        "description": "pod数量,个",
+                        "format": "uint32",
+                        "properties": {},
+                        "type": "integer"
+                    },
+                    "VolumeCount": {
+                        "description": "存储卷数量，个",
+                        "format": "uint32",
+                        "properties": {},
+                        "type": "integer"
+                    },
+                    "storage": {
+                        "description": "存储空间，单位GiB",
+                        "format": "float64",
+                        "properties": {},
+                        "type": "number"
+                    }
+                },
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.MateLabels": {
+                "properties": {
+                    "administrativeArea": {
+                        "description": "行政区域",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "room": {
+                        "description": "机房",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "netZone": {
+                        "description": "网络区域",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "az": {
+                        "description": "可用区",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "resourceArea": {
+                        "description": "资源环境",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "tenantId": {
+                        "description": "租户ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "administrativeArea",
+                    "room",
+                    "netZone",
+                    "az",
+                    "resourceArea",
+                    "tenantId"
+                ],
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.CreateApplicationSpaceReq": {
+                "properties": {
+                    "x-jdcloud-request-id": {
+                        "description": "请求ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "x-jdcloud-pin": {
+                        "description": "用户ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "clusterId": {
+                        "description": "集群ID，非必填，如果指定集群创建应用空间时，只需要填写‘TenantId’标签以及资源配额",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "应用空间名称，全局唯一",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "clusterType": {
+                        "default": 1,
+                        "description": "集群类型，1共享集群，2独享集群",
+                        "enum": [
+                            1,
+                            2
+                        ],
+                        "format": "int",
+                        "properties": {},
+                        "type": "integer"
+                    },
+                    "spaceQuota": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.Quota"
+                    },
+                    "required": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.MateLabels"
+                    }
+                },
+                "required": [
+                    "x-jdcloud-request-id",
+                    "name"
+                ],
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.CreateApplicationSpaceRes": {
+                "example": "",
+                "properties": {
+                    "requestId": {
+                        "description": "请求ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "error": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.common.ErrorMessage"
+                    },
+                    "result": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.CreateApplicationSpaceResData"
+                    }
+                },
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.CreateApplicationSpaceResData": {
+                "properties": {
+                    "clusterId": {
+                        "description": "应用空间所在集群ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.DeleteApplicationSpaceReq": {
+                "properties": {
+                    "x-jdcloud-request-id": {
+                        "description": "请求ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "x-jdcloud-pin": {
+                        "description": "用户ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "应用空间名称",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "x-jdcloud-request-id",
+                    "name"
+                ],
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.DeleteApplicationSpaceRes": {
+                "example": "",
+                "properties": {
+                    "requestId": {
+                        "description": "请求ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "error": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.common.ErrorMessage"
+                    }
+                },
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.QueryApplicationSpaceReq": {
+                "properties": {
+                    "x-jdcloud-request-id": {
+                        "description": "请求ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "x-jdcloud-pin": {
+                        "description": "用户ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "应用空间名称",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "x-jdcloud-request-id"
+                ],
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.QueryApplicationSpaceRes": {
+                "example": "",
+                "properties": {
+                    "requestId": {
+                        "description": "请求ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "error": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.common.ErrorMessage"
+                    },
+                    "result": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.ApplicationSpace"
+                    }
+                },
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.UpdateApplicationSpaceResourceQuotaReq": {
+                "properties": {
+                    "x-jdcloud-request-id": {
+                        "description": "请求ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "x-jdcloud-pin": {
+                        "description": "用户ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "应用空间名称",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "spaceQuota": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.Quota"
+                    }
+                },
+                "required": [
+                    "x-jdcloud-request-id",
+                    "name"
+                ],
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.UpdateApplicationSpaceResourceQuotaRes": {
+                "example": "",
+                "properties": {
+                    "requestId": {
+                        "description": "请求ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "error": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.common.ErrorMessage"
+                    }
+                },
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.ListClustersReq": {
+                "properties": {
+                    "x-jdcloud-request-id": {
+                        "description": "请求ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "x-jdcloud-pin": {
+                        "description": "用户ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "pageSize": {
+                        "default": 0,
+                        "description": "容量，默认不分页",
+                        "format": "int",
+                        "properties": {},
+                        "type": "integer"
+                    },
+                    "pageNum": {
+                        "default": 1,
+                        "description": "页码",
+                        "format": "int",
+                        "properties": {},
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "集群名称",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "administratively": {
+                        "description": "行政区域",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "room": {
+                        "description": "机房",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "netZone": {
+                        "description": "网络区域",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "az": {
+                        "description": "可用区",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "resourceArea": {
+                        "description": "资源环境",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "tenant": {
+                        "description": "租户",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "x-jdcloud-request-id"
+                ],
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.ListClustersRes": {
+                "example": "",
+                "properties": {
+                    "requestId": {
+                        "description": "请求ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "error": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.common.ErrorMessage"
+                    },
+                    "totalCount": {
+                        "description": "总数",
+                        "format": "int",
+                        "properties": {},
+                        "type": "integer"
+                    },
+                    "result": {
+                        "format": "[]*api.ListClustersResData",
+                        "items": {
+                            "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.ListClustersResData"
+                        },
+                        "properties": {},
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.ListClustersResData": {
+                "properties": {
+                    "clusterInfo": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.ClusterDetail"
+                    },
+                    "nodeSummary": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.NodeSummary"
+                    },
+                    "resourceSummary": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.ResourceSummary"
+                    }
+                },
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.ClusterDetail": {
+                "properties": {
+                    "clusterName": {
+                        "description": "集群名称",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "description": {
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "labels": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.MateLabels"
+                    },
+                    "status": {
+                        "description": "集群状态：1正常、2创建中、3接入中、4删除中、-1异常",
+                        "format": "int",
+                        "properties": {},
+                        "type": "integer"
+                    },
+                    "clusterType": {
+                        "description": "集群类型：1共享集群、2独享集群",
+                        "format": "int",
+                        "properties": {},
+                        "type": "integer"
+                    },
+                    "gpu": {
+                        "description": "是否是GPU集群",
+                        "format": "bool",
+                        "properties": {},
+                        "type": "boolean"
+                    },
+                    "kubeVersion": {
+                        "description": "k8s版本",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "containerRuntime": {
+                        "description": "容器运行时：Docker、Containerd",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "arch": {
+                        "description": "硬件架构：arm64、amd64",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "os": {
+                        "description": "操作系统",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "cni": {
+                        "description": "网络插件类型：calico、flannel、tianlian",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.NodeSummary": {
+                "properties": {
+                    "master": {
+                        "additionalProperties": {
+                            "format": "int",
+                            "properties": {},
+                            "type": "integer"
+                        },
+                        "description": "master节点状态信息，NotReady/Ready",
+                        "format": "map[kubernetes.NodeStatus]int",
+                        "properties": {},
+                        "type": "object"
+                    },
+                    "worker": {
+                        "additionalProperties": {
+                            "format": "int",
+                            "properties": {},
+                            "type": "integer"
+                        },
+                        "description": "worker节点状态信息，NotReady/Ready",
+                        "format": "map[kubernetes.NodeStatus]int",
+                        "properties": {},
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.ResourceSummary": {
+                "properties": {
+                    "totalCPU": {
+                        "description": "CPU总量，单位核",
+                        "format": "float32",
+                        "properties": {},
+                        "type": "number"
+                    },
+                    "availableCPU": {
+                        "description": "CPU可用量，单位核",
+                        "format": "float32",
+                        "properties": {},
+                        "type": "number"
+                    },
+                    "totalMemory": {
+                        "description": "内存总量，单位:MiB",
+                        "format": "int64",
+                        "properties": {},
+                        "type": "integer"
+                    },
+                    "availableMemory": {
+                        "description": "内存可用量，单位:MiB",
+                        "format": "int64",
+                        "properties": {},
+                        "type": "integer"
+                    },
+                    "totalEphemeralStorage": {
+                        "description": "临时存储总量，单位GiB",
+                        "format": "float32",
+                        "properties": {},
+                        "type": "number"
+                    },
+                    "availableEphemeralStorage": {
+                        "description": "临时存储可用量,单位GiB",
+                        "format": "float32",
+                        "properties": {},
+                        "type": "number"
+                    }
+                },
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.CreateClusterReq": {
+                "properties": {
+                    "x-jdcloud-request-id": {
+                        "description": "请求ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "x-jdcloud-pin": {
+                        "description": "用户ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "ClusterMate": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.ClusterMeta"
+                    }
+                },
+                "required": [
+                    "x-jdcloud-request-id"
+                ],
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.ClusterMeta": {
+                "properties": {
+                    "clusterName": {
+                        "description": "集群名称",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "clusterCNName": {
+                        "description": "集群中文名",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "clusterType": {
+                        "description": "集群类型，1共享集群，2独享集群",
+                        "enum": [
+                            1,
+                            2
+                        ],
+                        "format": "int",
+                        "properties": {},
+                        "type": "integer"
+                    },
+                    "labels": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.MateLabels"
+                    },
+                    "description": {
+                        "description": "集群描述信息",
+                        "format": "*string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "sourceType": {
+                        "default": "import",
+                        "description": "集群来源：improt-导入",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "arch": {
+                        "description": "硬件架构：amd64,arm64",
+                        "enum": [
+                            "amd64",
+                            "arm64"
+                        ],
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "kubeVersion": {
+                        "description": "集群版本",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "kubeConfig": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.KubeconfigUpload"
+                    }
+                },
+                "required": [
+                    "clusterName",
+                    "clusterType",
+                    "arch"
+                ],
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.KubeconfigUpload": {
+                "properties": {
+                    "content": {
+                        "description": "kubeconfig文件，推荐使用base64编码",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "encoded": {
+                        "description": "是否进行base64编码",
+                        "format": "bool",
+                        "properties": {},
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "content",
+                    "encoded"
+                ],
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.CreateClusterRes": {
+                "example": "",
+                "properties": {
+                    "requestId": {
+                        "description": "请求ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "error": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.common.ErrorMessage"
+                    },
+                    "result": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.CreateClusterResData"
+                    }
+                },
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.CreateClusterResData": {
+                "properties": {
+                    "command": {
+                        "description": "导入集群注册指令",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.UpdateClusterLabelsReq": {
+                "properties": {
+                    "x-jdcloud-request-id": {
+                        "description": "请求ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "x-jdcloud-pin": {
+                        "description": "用户ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "ClusterId": {
+                        "description": "集群ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "Labels": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.MateLabels"
+                    }
+                },
+                "required": [
+                    "x-jdcloud-request-id",
+                    "ClusterId"
+                ],
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.UpdateClusterLabelsRes": {
+                "example": "",
+                "properties": {
+                    "requestId": {
+                        "description": "请求ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "error": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.common.ErrorMessage"
+                    }
+                },
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.DeleteClusterReq": {
+                "properties": {
+                    "x-jdcloud-request-id": {
+                        "description": "请求ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "x-jdcloud-pin": {
+                        "description": "用户ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "ClusterName": {
+                        "description": "集群名称",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "x-jdcloud-request-id",
+                    "ClusterName"
+                ],
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.DeleteClusterRes": {
+                "example": "",
+                "properties": {
+                    "requestId": {
+                        "description": "请求ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "error": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.common.ErrorMessage"
+                    }
+                },
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.QueryClusterReq": {
+                "properties": {
+                    "x-jdcloud-request-id": {
+                        "description": "请求ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "x-jdcloud-pin": {
+                        "description": "用户ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "ClusterName": {
+                        "description": "集群名称",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "x-jdcloud-request-id"
+                ],
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.QueryClusterRes": {
+                "example": "",
+                "properties": {
+                    "requestId": {
+                        "description": "请求ID",
+                        "format": "string",
+                        "properties": {},
+                        "type": "string"
+                    },
+                    "error": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.common.ErrorMessage"
+                    },
+                    "result": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.QueryClusterResData"
+                    }
+                },
+                "type": "object"
+            },
+            "coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.QueryClusterResData": {
+                "properties": {
+                    "clusterInfo": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.ClusterDetail"
+                    },
+                    "nodeSummary": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.NodeSummary"
+                    },
+                    "resourceSummary": {
+                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.ResourceSummary"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "info": {
+        "title": "",
+        "version": ""
+    },
+    "paths": {
+        "/v1/unionApplicationSpace": {
+            "get": {
+                "parameters": [
+                    {
+                        "description": "请求ID",
+                        "in": "header",
+                        "name": "x-jdcloud-request-id",
+                        "required": true,
+                        "schema": {
+                            "description": "请求ID",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "用户ID",
+                        "in": "header",
+                        "name": "x-jdcloud-pin",
+                        "schema": {
+                            "description": "用户ID",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "容量，默认不分页",
+                        "in": "query",
+                        "name": "pageSize",
+                        "schema": {
+                            "default": 0,
+                            "description": "容量，默认不分页",
+                            "format": "int",
+                            "properties": {},
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "页码",
+                        "in": "query",
+                        "name": "pageNum",
+                        "schema": {
+                            "default": 1,
+                            "description": "页码",
+                            "format": "int",
+                            "properties": {},
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "应用空间名称",
+                        "in": "query",
+                        "name": "Name",
+                        "schema": {
+                            "description": "应用空间名称",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "行政区域",
+                        "in": "query",
+                        "name": "administratively",
+                        "schema": {
+                            "description": "行政区域",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "机房",
+                        "in": "query",
+                        "name": "room",
+                        "schema": {
+                            "description": "机房",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "网络区域",
+                        "in": "query",
+                        "name": "netZone",
+                        "schema": {
+                            "description": "网络区域",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "可用区",
+                        "in": "query",
+                        "name": "az",
+                        "schema": {
+                            "description": "可用区",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "资源环境",
+                        "in": "query",
+                        "name": "resourceArea",
+                        "schema": {
+                            "description": "资源环境",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "租户ID",
+                        "in": "query",
+                        "name": "tenantId",
+                        "schema": {
+                            "description": "租户ID",
+                            "format": "[]string",
+                            "items": {
+                                "format": "string",
+                                "properties": {},
+                                "type": "string"
+                            },
+                            "properties": {},
+                            "type": "array"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.ListApplicationSpacesRes"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "summary": "查询应用空间列表",
+                "tags": [
+                    "应用空间管理V1"
+                ]
+            },
+            "post": {
+                "parameters": [
+                    {
+                        "description": "请求ID",
+                        "in": "header",
+                        "name": "x-jdcloud-request-id",
+                        "required": true,
+                        "schema": {
+                            "description": "请求ID",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "用户ID",
+                        "in": "header",
+                        "name": "x-jdcloud-pin",
+                        "schema": {
+                            "description": "用户ID",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "应用空间名称，全局唯一",
+                                        "format": "string",
+                                        "properties": {},
+                                        "type": "string"
+                                    },
+                                    "clusterType": {
+                                        "default": 1,
+                                        "description": "集群类型，1共享集群，2独享集群",
+                                        "enum": [
+                                            1,
+                                            2
+                                        ],
+                                        "format": "int",
+                                        "properties": {},
+                                        "type": "integer"
+                                    },
+                                    "spaceQuota": {
+                                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.Quota"
+                                    },
+                                    "required": {
+                                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.MateLabels"
+                                    },
+                                    "clusterId": {
+                                        "description": "集群ID，非必填，如果指定集群创建应用空间时，只需要填写‘TenantId’标签以及资源配额",
+                                        "format": "string",
+                                        "properties": {},
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "name"
+                                ],
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.CreateApplicationSpaceRes"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "summary": "创建应用空间",
+                "tags": [
+                    "应用空间管理V1"
+                ]
+            },
+            "summary": "创建应用空间"
+        },
+        "/v1/unionApplicationSpace/{name}": {
+            "delete": {
+                "parameters": [
+                    {
+                        "description": "请求ID",
+                        "in": "header",
+                        "name": "x-jdcloud-request-id",
+                        "required": true,
+                        "schema": {
+                            "description": "请求ID",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "用户ID",
+                        "in": "header",
+                        "name": "x-jdcloud-pin",
+                        "schema": {
+                            "description": "用户ID",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "应用空间名称",
+                        "in": "path",
+                        "name": "name",
+                        "required": true,
+                        "schema": {
+                            "description": "应用空间名称",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.DeleteApplicationSpaceRes"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "summary": "删除应用空间",
+                "tags": [
+                    "应用空间管理V1"
+                ]
+            },
+            "get": {
+                "parameters": [
+                    {
+                        "description": "请求ID",
+                        "in": "header",
+                        "name": "x-jdcloud-request-id",
+                        "required": true,
+                        "schema": {
+                            "description": "请求ID",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "用户ID",
+                        "in": "header",
+                        "name": "x-jdcloud-pin",
+                        "schema": {
+                            "description": "用户ID",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "应用空间名称",
+                        "in": "path",
+                        "name": "name",
+                        "required": true,
+                        "schema": {
+                            "description": "应用空间名称",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.QueryApplicationSpaceRes"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "summary": "查询应用空间详情",
+                "tags": [
+                    "应用空间管理V1"
+                ]
+            },
+            "summary": "查询应用空间详情"
+        },
+        "/v1/unionApplicationSpace/{name}/:updateQuota": {
+            "patch": {
+                "parameters": [
+                    {
+                        "description": "请求ID",
+                        "in": "header",
+                        "name": "x-jdcloud-request-id",
+                        "required": true,
+                        "schema": {
+                            "description": "请求ID",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "用户ID",
+                        "in": "header",
+                        "name": "x-jdcloud-pin",
+                        "schema": {
+                            "description": "用户ID",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "应用空间名称",
+                        "in": "path",
+                        "name": "name",
+                        "required": true,
+                        "schema": {
+                            "description": "应用空间名称",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "spaceQuota": {
+                                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.Quota"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.UpdateApplicationSpaceResourceQuotaRes"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "summary": "修改应用空间配额",
+                "tags": [
+                    "应用空间管理V1"
+                ]
+            },
+            "summary": "修改应用空间配额"
+        },
+        "/v1/unionCluster": {
+            "get": {
+                "parameters": [
+                    {
+                        "description": "请求ID",
+                        "in": "header",
+                        "name": "x-jdcloud-request-id",
+                        "required": true,
+                        "schema": {
+                            "description": "请求ID",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "用户ID",
+                        "in": "header",
+                        "name": "x-jdcloud-pin",
+                        "schema": {
+                            "description": "用户ID",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "容量，默认不分页",
+                        "in": "query",
+                        "name": "pageSize",
+                        "schema": {
+                            "default": 0,
+                            "description": "容量，默认不分页",
+                            "format": "int",
+                            "properties": {},
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "页码",
+                        "in": "query",
+                        "name": "pageNum",
+                        "schema": {
+                            "default": 1,
+                            "description": "页码",
+                            "format": "int",
+                            "properties": {},
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "description": "集群名称",
+                        "in": "query",
+                        "name": "name",
+                        "schema": {
+                            "description": "集群名称",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "行政区域",
+                        "in": "query",
+                        "name": "administratively",
+                        "schema": {
+                            "description": "行政区域",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "机房",
+                        "in": "query",
+                        "name": "room",
+                        "schema": {
+                            "description": "机房",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "网络区域",
+                        "in": "query",
+                        "name": "netZone",
+                        "schema": {
+                            "description": "网络区域",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "可用区",
+                        "in": "query",
+                        "name": "az",
+                        "schema": {
+                            "description": "可用区",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "资源环境",
+                        "in": "query",
+                        "name": "resourceArea",
+                        "schema": {
+                            "description": "资源环境",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "租户",
+                        "in": "query",
+                        "name": "tenant",
+                        "schema": {
+                            "description": "租户",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.ListClustersRes"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "summary": "查询集群列表",
+                "tags": [
+                    "集群管理V1"
+                ]
+            },
+            "post": {
+                "parameters": [
+                    {
+                        "description": "请求ID",
+                        "in": "header",
+                        "name": "x-jdcloud-request-id",
+                        "required": true,
+                        "schema": {
+                            "description": "请求ID",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "用户ID",
+                        "in": "header",
+                        "name": "x-jdcloud-pin",
+                        "schema": {
+                            "description": "用户ID",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "ClusterMate": {
+                                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.ClusterMeta"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.CreateClusterRes"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "summary": "导入集群",
+                "tags": [
+                    "集群管理V1"
+                ]
+            },
+            "summary": "导入集群"
+        },
+        "/v1/unionCluster/{ClusterId}/:updateLabels": {
+            "patch": {
+                "parameters": [
+                    {
+                        "description": "请求ID",
+                        "in": "header",
+                        "name": "x-jdcloud-request-id",
+                        "required": true,
+                        "schema": {
+                            "description": "请求ID",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "用户ID",
+                        "in": "header",
+                        "name": "x-jdcloud-pin",
+                        "schema": {
+                            "description": "用户ID",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "集群ID",
+                        "in": "path",
+                        "name": "ClusterId",
+                        "required": true,
+                        "schema": {
+                            "description": "集群ID",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "Labels": {
+                                        "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.kubernetes.MateLabels"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.UpdateClusterLabelsRes"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "summary": "修改集群标签信息",
+                "tags": [
+                    "集群管理V1"
+                ]
+            },
+            "summary": "修改集群标签信息"
+        },
+        "/v1/unionCluster/{ClusterName}": {
+            "delete": {
+                "parameters": [
+                    {
+                        "description": "请求ID",
+                        "in": "header",
+                        "name": "x-jdcloud-request-id",
+                        "required": true,
+                        "schema": {
+                            "description": "请求ID",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "用户ID",
+                        "in": "header",
+                        "name": "x-jdcloud-pin",
+                        "schema": {
+                            "description": "用户ID",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "集群名称",
+                        "in": "path",
+                        "name": "ClusterName",
+                        "required": true,
+                        "schema": {
+                            "description": "集群名称",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.DeleteClusterRes"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "summary": "删除集群",
+                "tags": [
+                    "集群管理V1"
+                ]
+            },
+            "get": {
+                "parameters": [
+                    {
+                        "description": "请求ID",
+                        "in": "header",
+                        "name": "x-jdcloud-request-id",
+                        "required": true,
+                        "schema": {
+                            "description": "请求ID",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "用户ID",
+                        "in": "header",
+                        "name": "x-jdcloud-pin",
+                        "schema": {
+                            "description": "用户ID",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "集群名称",
+                        "in": "path",
+                        "name": "ClusterName",
+                        "required": true,
+                        "schema": {
+                            "description": "集群名称",
+                            "format": "string",
+                            "properties": {},
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/coding.jd.com.jdcloudvessel.jdos-cluster-manager-api-xunfei.api.QueryClusterRes"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "summary": "查询集群详情",
+                "tags": [
+                    "集群管理V1"
+                ]
+            },
+            "summary": "查询集群详情"
+        }
+    }
+}
